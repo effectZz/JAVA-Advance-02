@@ -8,7 +8,7 @@ import java.util.concurrent.CyclicBarrier;
  * 异步运行一个方法，拿到这个方法的返回值后，退出主线程？
  * 写出你的方法，越多越好，提交到github。
  *
- * 使用CountDownLatch的方式CyclicBarrier
+ * 使用CyclicBarrier的方式
  */
 public class Homework4 {
 
