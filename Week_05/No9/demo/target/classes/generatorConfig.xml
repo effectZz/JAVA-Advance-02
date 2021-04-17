@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-<!--    <classPathEntry-->
-<!--            location="C:/Oracle/Middleware/wlserver_10.3/server/lib/ojdbc6.jar"/>-->
+    <!--    <classPathEntry-->
+    <!--            location="C:/Oracle/Middleware/wlserver_10.3/server/lib/ojdbc6.jar"/>-->
     <context id="my" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>
@@ -13,7 +13,8 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://rm-uf6h2s8g5xg6482r75o.mysql.rds.aliyuncs.com:3306/operating-management-20210328" userId="opera_man_prod"
+                        connectionURL="jdbc:mysql://rm-uf6h2s8g5xg6482r75o.mysql.rds.aliyuncs.com:3306/operating-management-20210328"
+                        userId="opera_man_prod"
                         password="nengliang2019@"/>
 
         <javaModelGenerator targetPackage="com.spring.learn.model.entity"

@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-<!--    <classPathEntry-->
-<!--            location="C:/Oracle/Middleware/wlserver_10.3/server/lib/ojdbc6.jar"/>-->
+    <!--    <classPathEntry-->
+    <!--            location="C:/Oracle/Middleware/wlserver_10.3/server/lib/ojdbc6.jar"/>-->
     <context id="my" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>

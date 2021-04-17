@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+
+    <bean id="student1" class="com.practice.no3.Student">
+        <property name="stuId" value="001"/>
+        <property name="name" value="小明"/>
+        <property name="age" value="12"/>
+    </bean>
+    <bean id="student2" class="com.practice.no3.Student">
+        <property name="stuId" value="002"/>
+        <property name="name" value="小李"/>
+        <property name="age" value="11"/>
+    </bean>
+    <bean id="student3" class="com.practice.no3.Student">
+        <property name="stuId" value="003"/>
+        <property name="name" value="小小明"/>
+        <property name="age" value="10"/>
+    </bean>
+    <bean id="student4" class="com.practice.no3.Student">
+        <property name="stuId" value="004"/>
+        <property name="name" value="小张"/>
+        <property name="age" value="9"/>
+    </bean>
+
+    <bean id="class1" class="com.practice.no3.FlagClass">
+        <property name="students">
+            <list>
+                <ref bean="student1"/>
+                <ref bean="student2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="class2" class="com.practice.no3.FlagClass">
+        <property name="students">
+            <list>
+                <ref bean="student3"/>
+                <ref bean="student4"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="school1" class="com.practice.no3.School">
+        <property name="flagClasses">
+            <list>
+                <ref bean="class1"/>
+                <ref bean="class2"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
