@@ -1,1 +1,8 @@
 3.（选做）实现一个 Spring XML 自定义配置，配置一组 Bean，例如：Student/Klass/School。
+
+配置的XML文件为 SchoolConfig.xml
+xml里初始化了4个学生2个班级
+
+
+对应的测试类：
+src/test/java/com/practice/no3/SchoolByXMLTest.java

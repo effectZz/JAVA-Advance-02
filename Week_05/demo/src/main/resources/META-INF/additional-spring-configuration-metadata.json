@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "school.studentIds",
+      "type": "java.lang.String",
+      "description": "Description for school.studentIds.",
+      "defaultValue": "1,2"
+    }
+  ]
+}

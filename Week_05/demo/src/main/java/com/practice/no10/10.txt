@@ -1,0 +1,23 @@
+10.（必做）研究一下 JDBC 接口和数据库连接池，掌握它们的设计和用法：
+1）使用 JDBC 原生接口，实现数据库的增删改查操作。
+2）使用事务，PrepareStatement 方式，批处理方式，改进上述操作。
+3）配置 Hikari 连接池，改进上述操作。提交代码到 GitHub。
+
+
+
+1）main方法实现了 JDBC 原生接口，实现数据库的增删改查操作。
+2）query 和 addBatch 则使用了 PreparedStatement 的方式 进行查询和新增的操作（这里偷懒了，都写死了）
+3) hikari文件夹下的是使用了hikari 的方式（这个是网上找的，HikariRunner的类不是特别的理解，不明白为什么要实现CommandLineRunner）
+一直都是使用springboot默认的hikari有机会需要了解一下底层处理的方式
+
+
+表结构的SQL
+CREATE TABLE `user_a`  (
+  `id` bigint NOT NULL COMMENT '主键ID',
+  `name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '姓名',
+  `age` int NULL DEFAULT NULL COMMENT '年龄',
+  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '邮箱',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;

@@ -1,1 +1,8 @@
 2.（必做）写代码实现 Spring Bean 的装配，方式越多越好（XML、Annotation 都可以）, 提交到 GitHub。
+
+auro的文件夹为自动装配的方式
+bean的文件夹为加载配置bean的方式   在BeanExampleConfig里 装配了方法名字为beanExample的bean 在test里直接就可获取了
+xml的文件夹为xml的方式  ->并且配置了 BeanConfig.xml 在BeanConfig里注入了XmlExample
+
+对应的测试类为
+src/test/java/com/practice/no2/SpringBeanExampleTest.java

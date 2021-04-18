@@ -1,0 +1,20 @@
+8.（必做）给前面课程提供的 Student/Klass/School 实现自动配置和 Starter。
+
+
+
+
+resources下的META-INF为网上下载，但是配置并不是太理解，视频课上听了并没有完全吃透。。。
+
+
+@EnableAutoConfiguration 关联了SchoolProperties.class 将它注入到SchoolAutoConfiguration
+@ConditionalOnClass引入指定的School.class类
+@ConditionalOnProperty获取了配置的前置为school的
+
+
+
+测试类：（但是最终好像不太行）
+src/test/java/com/practice/no8/SchoolTest.java
+
+
+报错- -
+Error creating bean with name 'com.practice.MySchoolTest': Unsatisfied dependency expressed through field 'mySchool'

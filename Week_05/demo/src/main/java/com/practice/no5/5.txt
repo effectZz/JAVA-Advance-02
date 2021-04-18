@@ -1,1 +1,12 @@
 5.（选做）总结一下，单例的各种写法，比较它们的优劣。
+
+HungryLoad 饿汉式的单例模式
+LazyLoad 懒汉式的单例  使用了双检锁的方式
+StaticState 静态内部类的方式
+Singleton 枚举的方式
+
+
+
+
+
+
