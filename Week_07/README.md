@@ -105,9 +105,39 @@ snd_to  --->收件人：写死了
 
 可以看到插入一百万的数据花了173秒 大约3分钟。
 
-如果是一条一条插入预计时间。。。。。。。。。。。。
+如果是一条一条插入预计时间    那。。。。。。。。。。。。
 
 **网上有通过memory的引擎快速创建的方式，试着弄没有成功、、**
 
 
+
+## 第九题
+
+### 读写分离 - 动态切换数据源版本 1.0
+
+
+
+最外层的demo文件夹下
+
+项目：demo\src\main\java\com\example\demo\database
+
+测试类：demo\src\test\java\com\example\demo\database\TestDataTest
+
+
+
+PS：网上找了部分例子没有实现成功，后续用aop方式貌似有些问题，最最后用了比较low的方式直接切换数据源去查询sql了。
+
+
+
+## 第十题
+
+### 读写分离 - 数据库框架版本 2.0
+
+
+
+最外层的demo文件夹下
+
+项目：demo\src\main\java\com\example\demo\shardingsphere\ShardingMasterSlaveDataSource
+
+测试类：demo\src\test\java\com\example\demo\shardingsphere\ShardingMasterSlaveDataSource
 

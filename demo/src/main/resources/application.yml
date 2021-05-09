@@ -1,0 +1,29 @@
+datasource:
+  master:
+    url: jdbc:mysql://47.100.125.213:3306/demo_trade?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  slave:
+    url: jdbc:mysql://47.100.125.213:3307/demo_trade?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+sharding:
+  datasource:
+    names: master,slave
+    ds_master:
+      url: jdbc:mysql://47.100.125.213:3306/demo_trade?useUnicode=true&characterEncoding=utf8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+    ds_slave:
+      url: jdbc:mysql://47.100.125.213:3307/demo_trade?useUnicode=true&characterEncoding=utf8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+  config:
+    masterslave:
+      master-data-source-name: master
+      slave-data-source-names: slave
