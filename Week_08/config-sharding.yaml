@@ -1,0 +1,80 @@
+schemaName: sharding_test
+
+dataSources:
+  ds_0:
+    url: jdbc:mysql://47.100.125.213:3306/sharding_test_0?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+  ds_1:
+    url: jdbc:mysql://47.100.125.213:3306/sharding_test_1?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+
+rules:
+- !SHARDING
+  tables: # 数据分片规则配置
+    mall_t_trade: # 逻辑表名称
+      actualDataNodes: ds_${0..1}.mall_t_trade_${0..15} # 由数据源名 + 表名组成（参考Inline语法规则）
+#      databaseStrategy (?): # 分库策略，缺省表示使用默认分库策略，以下的分片策略只能选其一
+#        standard: # 用于单分片键的标准分片场景
+#          shardingColumn: # 分片列名称
+#          shardingAlgorithmName: # 分片算法名称
+#        complex: # 用于多分片键的复合分片场景
+#          shardingColumns: #分片列名称，多个列以逗号分隔
+#          shardingAlgorithmName: # 分片算法名称
+#        hint: # Hint 分片策略
+#          shardingAlgorithmName: # 分片算法名称
+#        none: # 不分片
+      tableStrategy: # 分表策略，同分库策略
+        standard: # 用于单分片键的标准分片场景
+          shardingColumn: trade_id # 分片列名称
+          shardingAlgorithmName: t_trade_id # 自动分片算法名称
+#      keyGenerateStrategy: # 分布式序列策略
+#        column: # 自增列名称，缺省表示不使用自增主键生成器
+#        keyGeneratorName: # 分布式序列算法名称
+#  autoTables: # 自动分片表规则配置
+#    t_order_auto: # 逻辑表名称
+#      actualDataSources (?): # 数据源名称
+#      shardingStrategy: # 切分策略
+#        standard: # 用于单分片键的标准分片场景
+#          shardingColumn: # 分片列名称
+#          shardingAlgorithmName: # 自动分片算法名称
+#  bindingTables (+): # 绑定表规则列表
+#    - <logic_table_name_1, logic_table_name_2, ...> 
+#    - <logic_table_name_1, logic_table_name_2, ...> 
+#  broadcastTables (+): # 广播表规则列表
+#    - <table-name>
+#    - <table-name>
+  defaultDatabaseStrategy: # 默认数据库分片策略
+    standard:
+      shardingColumn: shop_id
+      shardingAlgorithmName: t_shop_id
+#  defaultTableStrategy: # 默认表分片策略
+#  defaultKeyGenerateStrategy: # 默认的分布式序列策略
+  
+  # 分片算法配置
+  shardingAlgorithms:
+    t_shop_id: # 分片算法名称
+      type: INLINE # 分片算法类型
+      props: # 分片算法属性配置
+        algorithm-expression: ds_${shop_id % 2}
+    t_trade_id: # 分片算法名称
+      type: INLINE # 分片算法类型
+      props: # 分片算法属性配置
+        algorithm-expression: mall_t_trade_${trade_id % 16}
+  
+  # 分布式序列算法配置
+#  keyGenerators:
+#    <key-generate-algorithm-name> (+): # 分布式序列算法名称
+#      type: # 分布式序列算法类型
+#      props: # 分布式序列算法属性配置
+#      # ...
+
