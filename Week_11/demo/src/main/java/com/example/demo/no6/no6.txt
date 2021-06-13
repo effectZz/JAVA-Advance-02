@@ -1,0 +1,2 @@
+目前这里只用了RedisTemplate做一个简单的测试，
+第八题用了jedis

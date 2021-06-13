@@ -1,0 +1,25 @@
+package com.example.demo.no1;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/test")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping("getUser/{id}")
+    public String getUser(@PathVariable int id) {
+        return userService.selectUseryById(id).toString();
+    }
+
+    @RequestMapping("update/{id}")
+    public String updateUser(@PathVariable int id) {
+         userService.updateUserById(id);
+        return userService.selectUseryById(id).toString();
+    }
+}

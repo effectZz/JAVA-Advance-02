@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://47.100.125.213:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=utf-8
+  redis:
+    host: 47.100.125.213
+    port: 6379
+    password:
+    database: 0
+mybatis:
+  mapper-locations: classpath:mybatis/*Mapper.xml
+  type-aliases-package: com.example.demo.no1.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: true
+    local-cache-scope: session

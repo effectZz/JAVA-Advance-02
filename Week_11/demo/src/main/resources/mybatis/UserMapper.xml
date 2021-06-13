@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.no1.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.no1.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+
+    <select id="selectUseryById" resultType="com.example.demo.no1.entity.User" useCache="true">
+        select *
+        from user
+        where id = #{id}
+    </select>
+
+    <update id="updateUserById">
+        UPDATE user SET name = 'xixi' WHERE `id` = #{id}
+    </update>
+
+    <cache/>
+</mapper>
