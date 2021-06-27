@@ -1,0 +1,72 @@
+version: '3.3'
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - 2181:2181
+    container_name: zookeeper
+  kafka1:
+    image: wurstmeister/kafka
+    depends_on:
+      - zookeeper
+    container_name: kafka1
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 47.100.125.213
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://47.100.125.213:9092
+      KAFKA_LISTENERS: PLAINTEXT://kafka1:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_BROKER_ID: 1
+    volumes:
+      - /compose/kafka/kafka1/data:/data
+      - /compose/kafka/kafka1/log:/datalog
+  kafka2:
+    image: wurstmeister/kafka
+    depends_on:
+      - zookeeper
+    container_name: kafka2
+    ports:
+      - 9093:9093
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 47.100.125.213
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://47.100.125.213:9093
+      KAFKA_LISTENERS: PLAINTEXT://kafka2:9093
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_BROKER_ID: 2
+    volumes:
+      - /compose/kafka/kafka2/data:/data
+      - /compose/kafka/kafka2/log:/datalog
+  kafka3:
+    image: wurstmeister/kafka
+    depends_on:
+      - zookeeper
+    container_name: kafka3
+    ports:
+      - 9094:9094
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 47.100.125.213
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://47.100.125.213:9094
+      KAFKA_LISTENERS: PLAINTEXT://kafka3:9094
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_BROKER_ID: 3
+    volumes:
+      - /compose/kafka/kafka3/data:/data
+      - /compose/kafka/kafka3/log:/datalog
+  kafka-manager:
+    image: sheepkiller/kafka-manager:latest
+    restart: unless-stopped
+    container_name: kafka-manager
+    hostname: kafka-manager
+    ports:
+      - "9000:9000"   ## 暴露端口
+    links:            # 连接本compose文件创建的container
+      - kafka1
+      - kafka2
+      - kafka3
+    external_links:   # 连接本compose文件以外的container
+      - zookeeper
+    environment:
+      ZK_HOSTS: 172.19.212.253:2181                 ## 修改:宿主机IP
+      TZ: CST-8
