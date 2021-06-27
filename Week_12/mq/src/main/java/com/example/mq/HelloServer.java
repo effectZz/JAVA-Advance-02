@@ -1,0 +1,12 @@
+package com.example.mq;
+
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class HelloServer {
+    @JmsListener(destination="hello-queue")
+    public void receive(String message) {
+        System.out.println(message);
+    }
+}
